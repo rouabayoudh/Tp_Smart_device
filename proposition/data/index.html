@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Patient Monitoring Dashboard</h1>
+    </header>
+    <main>
+        <aside class="sidebar">
+            <h2>Doctor Actions</h2>
+            <button id="add-patient-btn" class="btn-primary">Add New Patient</button>
+            <button id="reload-patient-btn" class="btn-primary">Reload Page</button>
+            <select id="patient-select" class="input-select">
+                <option value="" disabled selected>Select a Patient</option>
+            </select>
+        </aside>
+        <section class="content">
+            <div class="patient-info card">
+                <h2>Patient Information</h2>
+                <p><strong>Name:</strong> <span id="patient-name">N/A</span></p>
+                <p><strong>ID:</strong> <span id="patient-id">N/A</span></p>
+                <p><strong>MAC-ADDRESS:</strong> <span id="patient-mac-add">N/A</span></p>
+                <p><strong>Condition:</strong> <span id="patient-condition">N/A</span></p>
+                <div style="display: flex; justify-content:end;">
+                    <button id="update-patient-btn" class="btn-primary">Update Patient's name</button>
+                </div>
+
+            </div>
+
+
+            <div class="charts">
+                <!-- Separate Canvas for SpO2, BPM, and Body Temperature -->
+                <canvas id="spo2Chart" width="400" height="200"></canvas>
+                <canvas id="bpmChart" width="400" height="200"></canvas>
+                <canvas id="bodyTempChart" width="400" height="200"></canvas>
+            </div>
+
+        </section>
+    </main>
+
+
+
+
+    <!-- Modal Popup for Add Patient -->
+    <div id="addPatientModal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2>Add a new patient</h2>
+            <form id="add-patient-form">
+                <label for="patient-mac-add-input">Mac Address:</label>
+                <input type="text" id="patient-mac-add-input" required>
+                <label for="patient-name-add-input">Name:</label>
+                <input type="text" id="patient-name-add-input" name="name" required>
+                <button type="submit" id="submit-patient-btn" class="btn-primary">Add Patient</button>
+            </form>
+            <hr>
+            <h4> OR :</h4>
+            <div style="display: flex; justify-content:center;">
+                <button id="add-patient-btn" class="btn-primary">Pair with a smart device</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Update Patient Name -->
+    <div id="updatePatientModal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal-update" class="close">&times;</span>
+            <h2>Update Patient's Name</h2>
+            <form id="update-patient-form">
+                <label for="patient-name-input">Name:</label>
+                <input type="text" id="patient-name-input" required>
+                <button type="submit" class="btn-primary">Update Patient</button>
+            </form>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>Powered by ESP32 & AI | Designed with ♥</p>
+    </footer>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>

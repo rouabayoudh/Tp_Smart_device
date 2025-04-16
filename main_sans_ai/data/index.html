@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Patient Monitoring Dashboard</h1>
+    </header>
+    <main>
+        <aside class="sidebar">
+            <h2>Doctor Actions</h2>
+            <button id="add-patient-btn" class="btn-primary">Add New Patient</button>
+            <select id="patient-select" class="input-select">
+                <option value="" disabled selected>Select a Patient</option>
+                <option value="1">John Doe (ID: 1)</option>
+                <option value="2">Jane Smith (ID: 2)</option>
+            </select>
+        </aside>
+        <section class="content">
+            <div class="patient-info card">
+                <h2>Patient Information</h2>
+                <p><strong>Name:</strong> <span id="patient-name">N/A</span></p>
+                <p><strong>ID:</strong> <span id="patient-id">N/A</span></p>
+                <p><strong>Condition:</strong> <span id="patient-condition" class="status">N/A</span></p>
+            </div>
+            <div class="charts">
+                <div class="chart-container card">
+                    <h3>Oxygen Saturation (SP) Curve</h3>
+                    <canvas id="sp-chart"></canvas>
+                </div>
+                <div class="chart-container card">
+                    <h3>Heartbeat Curve</h3>
+                    <canvas id="heartbeat-chart"></canvas>
+                </div>
+            </div>
+            <!--
+            <div class="insights-alerts">
+                <div class="insights card">
+                    <h2>Insights</h2>
+                    <ul id="insights-list">
+                        <li>No data available</li>
+                    </ul>
+                </div>
+                <div class="alerts card">
+                    <h2>Alerts</h2>
+                    <ul id="alerts-list">
+                        <li>No alerts</li>
+                    </ul>
+                </div>
+            </div>
+            -->
+        </section>
+    </main>
+
+    <!-- Modal Popup for Add Patient -->
+    <div id="addPatientModal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2>Add New Patient</h2>
+            <!--<form id="add-patient-form">
+                <label for="patient-name-input">Name:</label>
+                <input type="text" id="patient-name-input" required>
+                <label for="patient-condition-input">Condition:</label>
+                <input type="text" id="patient-condition-input" required>
+                <button type="submit" class="btn-primary">Add Patient</button>
+            </form> -->
+            <div style="display: flex; justify-content:center;">
+                <button id="add-patient-btn" class="btn-primary">Pair with a smart device</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered by ESP32 & AI | Designed with ♥</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>
